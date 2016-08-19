@@ -2,6 +2,15 @@
     top: 50px;
 }
 
+#modal-block {
+    display: none;
+    background: url('../img/trans50.png');
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 5000;
+}
+
 .blob-mouseover {
     font-size: 12px;
     background: #FFF;
@@ -30,6 +39,61 @@
 #tracker-overlay {
     right: 0;
     border-bottom-left-radius: 5px;
+}
+
+#battle-overlay {
+    width: 600px;
+    height: 400px;
+    z-index: 5001;
+    position: absolute;
+    top: 100px;
+    border: 3px solid #FFF;
+}
+
+#battle-overlay-x {
+    position: absolute;
+    border: 3px solid #FFF;
+    height: 30px;
+    width: 30px;
+    right: -15px;
+    top: -15px;
+    background: #F00;
+    border-radius: 15px;
+    line-height: 24px;
+    color: #FFF;
+    z-index: 5003;
+    text-align: center;
+    cursor: pointer;
+}
+
+#battle-creature {
+    z-index: 5002;
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    left: 175px;
+    top: 20px;
+    background: url('../img/smoke.png');
+    text-align: center;
+    animation: bobble 2s ease-in-out infinite;
+}
+
+#battle-creature img {
+    width: 150px;
+}
+
+@keyframes bobble {
+    0% {
+        transform: translate3d(0, 0, 0px);
+        animation-timing-function: ease-in;
+    }
+    50% {
+        transform: translate3d(0, 50px, 0px);
+        animation-timing-function: ease-out;
+    }
+    100% {
+        transform: translate3d(0, 0, 0px);
+    }
 }
 
 #tracker-overlay .creature {

@@ -1,5 +1,10 @@
 $(function(){
 
+    $('#battle-overlay-x').click(function(){
+        $('#battle-overlay').hide();
+        $('#modal-block').hide();
+    });
+
     $('#tracker-btn').click(function(e){
         e.preventDefault();
         var overlay = $('#tracker-overlay');
@@ -190,19 +195,50 @@ function creatureInit() {
         var marker = new google.maps.Marker({
             position: new google.maps.LatLng(lat, lng),
             icon: creatures[c].ico,
-            visible: true
+            visible: false,
+            indexNumber: c
+        });
+
+        marker.setMap(map);
+
+        google.maps.event.addListener(marker, 'click', function() {
+            battle(this.indexNumber);
         });
 
         creatures[c].lat = lat;
         creatures[c].lng = lng;
         creatures[c].marker = marker;
 
-        marker.setMap(map);
-
         $('#tracker-overlay').find('.row').append('<div class="col-md-4" id="tracker-creature-'+c+'"><div class="creature"><img src="' + creatures[c].img + '"><br><span></span></div></div>')
     }
 
     nearby();
+}
+
+function battle(c) {
+
+    if (creatures[c].visible && !creatures[c].caught) {
+
+        var modal_block = $('#modal-block');
+        modal_block
+            .css({
+                width: $(window).width(),
+                height: $(window).height()
+            })
+            .show();
+
+        var battle_overlay = $('#battle-overlay');
+        var streetview = 'https://maps.googleapis.com/maps/api/streetview?size=600x400&location='+creatures[c].lat+','+creatures[c].lng+'&key=AIzaSyDj8i3P_9tONkyNR7sRL3DojZtpOUJlqlg';
+
+        battle_overlay
+            .css({
+                'background-image': 'url('+streetview+')',
+                left: ($(window).width()/2)-300
+            })
+            .show();
+
+        $('#battle-creature').html('<img src="'+creatures[c].img+'">');
+    }
 }
 
 function getRandomInt(min, max) {
