@@ -1,5 +1,4 @@
 #map {
-    background: #F00;
     top: 50px;
 }
 
@@ -10,4 +9,42 @@
     border: 1px solid #000;
     border-radius: 5px;
     color: #000;
+}
+
+.overlay {
+    display: none;
+    position: absolute;
+    top: 48px;
+    background: url('../img/trans80.png');
+    border: 2px solid #3a3a3a;
+    width: 300px;
+    height: 300px;
+    padding: 15px;
+}
+
+#caught-overlay {
+    left: 0;
+    border-bottom-right-radius: 5px;
+}
+
+#tracker-overlay {
+    right: 0;
+    border-bottom-left-radius: 5px;
+}
+
+#tracker-overlay .creature {
+    text-align: center;
+    padding: 5px;
+    margin-bottom: 20px;
+}
+
+#tracker-overlay .creature img {
+    max-height: 50px;
+    max-width: 50px;
+}
+
+#tracker-overlay .creature i {
+    font-weight: bold;
+    margin-left: 3px;
+    margin-right: 3px;
 }

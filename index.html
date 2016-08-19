@@ -37,15 +37,15 @@
                 <a class="navbar-brand" href="#">Creature Pop Go</a>
             </div>
             <form class="navbar-form navbar-right" style="display:none;" id="buttons">
-                <a href="#" class="btn btn-default">
-                    <i class="fa fa-bullseye"></i>
-                    Tracker
-                </a>
-                <a href="#" class="btn btn-default">
+                <a href="#" class="btn btn-default" id="caught-btn">
                     <i class="fa fa-bug"></i>
                     Caught
                 </a>
-                <a href="https://www.etsy.com/shop/CreaturePop" target="_blank" class="btn btn-success">
+                <a href="#" class="btn btn-default" id="tracker-btn">
+                    <i class="fa fa-bullseye"></i>
+                    Tracker
+                </a>
+                <a href="https://www.etsy.com/shop/CreaturePop" target="_blank" class="btn btn-default">
                     <i class="fa fa-shopping-cart"></i>
                     Etsy Store
                 </a>
@@ -78,7 +78,15 @@
         </div>
     </div>
 
-    <div id="map"></div>
+    <div id="map-container">
+        <div id="map"></div>
+        <div class="overlay" id="tracker-overlay">
+            <div class="row"></div>
+        </div>
+        <div class="overlay" id="caught-overlay">
+            This isn't done yet!
+        </div>
+    </div>
 
 </div>
 

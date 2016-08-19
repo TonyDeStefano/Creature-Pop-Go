@@ -1,5 +1,33 @@
 $(function(){
 
+    $('#tracker-btn').click(function(e){
+        e.preventDefault();
+        var overlay = $('#tracker-overlay');
+        if (overlay.css('display') == 'none') {
+            overlay.show();
+            $(this).addClass('btn-success');
+            $(this).removeClass('btn-default');
+        } else {
+            overlay.hide();
+            $(this).removeClass('btn-success');
+            $(this).addClass('btn-default');
+        }
+    });
+
+    $('#caught-btn').click(function(e){
+        e.preventDefault();
+        var overlay = $('#caught-overlay');
+        if (overlay.css('display') == 'none') {
+            overlay.show();
+            $(this).addClass('btn-success');
+            $(this).removeClass('btn-default');
+        } else {
+            overlay.hide();
+            $(this).removeClass('btn-success');
+            $(this).addClass('btn-default');
+        }
+    });
+
     $('#address').on('keypress', function(e){
         if (e.keyCode == 13) {
             e.preventDefault();
@@ -162,7 +190,7 @@ function creatureInit() {
         var marker = new google.maps.Marker({
             position: new google.maps.LatLng(lat, lng),
             icon: creatures[c].ico,
-            visible: false
+            visible: true
         });
 
         creatures[c].lat = lat;
@@ -170,7 +198,11 @@ function creatureInit() {
         creatures[c].marker = marker;
 
         marker.setMap(map);
+
+        $('#tracker-overlay').find('.row').append('<div class="col-md-4" id="tracker-creature-'+c+'"><div class="creature"><img src="' + creatures[c].img + '"><br><span></span></div></div>')
     }
+
+    nearby();
 }
 
 function getRandomInt(min, max) {
@@ -235,15 +267,43 @@ function move(direction){
     me.marker.setPosition(new google.maps.LatLng(me.lat, me.lng));
     me.shadow.setPosition(new google.maps.LatLng(me.lat, me.lng));
 
+    nearby();
+}
+
+function nearby() {
+
     for (var c=0; c<creatures.length; c++) {
+
         if (!creatures[c].caught) {
+
+            var tracker_creature = $('#tracker-creature-'+c);
             var meters = Math.round(getDistanceFromLatLonInKm(me.lat, me.lng, creatures[c].lat, creatures[c].lng) * 1000);
+
             if (meters <= 80) {
                 creatures[c].visible = true;
                 creatures[c].marker.setVisible(true);
             } else {
                 creatures[c].visible = false;
                 creatures[c].marker.setVisible(false);
+            }
+
+            if (meters <= 100) {
+                tracker_creature.show();
+                tracker_creature.find('span')
+                    .css('color', '#3c763d')
+                    .html('<i class="fa fa-bullseye"></i>');
+            } else if (meters <= 200) {
+                tracker_creature.show();
+                tracker_creature.find('span')
+                    .css('color', '#aa6708')
+                    .html('<i class="fa fa-bullseye"></i><i class="fa fa-bullseye"></i>');
+            } else if (meters <= 300) {
+                tracker_creature.show();
+                tracker_creature.find('span')
+                    .css('color', '#a94442')
+                    .html('<i class="fa fa-bullseye"></i><i class="fa fa-bullseye"></i><i class="fa fa-bullseye"></i>');
+            } else {
+                tracker_creature.hide();
             }
         }
     }
