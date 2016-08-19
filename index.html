@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Creature Pop Go</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://use.fontawesome.com/0753562cc9.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDj8i3P_9tONkyNR7sRL3DojZtpOUJlqlg"></script>
+
+    <script src="js/creatures.js"></script>
+    <script src="js/me.js"></script>
+    <script src="js/controller.js"></script>
+    <script src="js/tooltip.js"></script>
+
+    <link rel="stylesheet" href="css/styles.css">
+
+</head>
+<body>
+
+
+<div class="hidden-sm hidden-xs">
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Creature Pop Go</a>
+            </div>
+            <form class="navbar-form navbar-right" style="display:none;" id="buttons">
+                <a href="#" class="btn btn-default">
+                    <i class="fa fa-bullseye"></i>
+                    Tracker
+                </a>
+                <a href="#" class="btn btn-default">
+                    <i class="fa fa-bug"></i>
+                    Caught
+                </a>
+                <a href="https://www.etsy.com/shop/CreaturePop" target="_blank" class="btn btn-success">
+                    <i class="fa fa-shopping-cart"></i>
+                    Etsy Store
+                </a>
+                <a href="https://www.facebook.com/Creature-Pop-Cute-Creepy-Originals-by-Jeremy-Holzapfel-669845626437412/" target="_blank" class="btn btn-primary">
+                    <i class="fa fa-facebook-official"></i>
+                    Facebook
+                </a>
+                <a href="index.html" class="btn btn-danger">
+                    <i class="fa fa-refresh"></i>
+                    Start Over
+                </a>
+            </form>
+        </div>
+    </nav>
+
+    <div class="jumbotron">
+        <div class="container">
+            <h2>Welcome to Creature Pop Go</h2>
+            <p>Enter a street address to begin:</p>
+            <div class="row">
+                <div class="col-md-9">
+                    <input id="address" class="form-control">
+                </div>
+                <div class="col-md-3">
+                    <button class="btn btn-success btn-block" id="start">
+                        Start!
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="map"></div>
+
+</div>
+
+<div class="hidden-md hidden-lg">
+
+    <div class="jumbotron">
+        <div class="container">
+            <h1>Sorry!</h1>
+            <p>Creature Pop Go only works on a desktop computer.</p>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

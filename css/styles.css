@@ -1,0 +1,13 @@
+#map {
+    background: #F00;
+    top: 50px;
+}
+
+.blob-mouseover {
+    font-size: 12px;
+    background: #FFF;
+    padding: 5px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    color: #000;
+}
